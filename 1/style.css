@@ -1,0 +1,97 @@
+:root {
+  --c-fg: #f1eee3;
+  --c-bg: #020202;
+  --t-family-mono: Monaco, monospace;
+}
+
+html, body { margin: 0; padding: 0; }
+
+canvas { display: block; }
+
+*::selection {
+  color: var(--c-bg);
+  background-color: var(--c-fg);
+}
+
+* {
+  font-family: var(--t-family-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--c-fg);
+  user-select: none;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--c-bg);
+  padding: 4rem;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  gap: 3rem;
+  margin: auto;
+  height: 100%;
+}
+
+
+.p5-parameters {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 22rem;
+}
+.p5-parameter-group {
+  border-top: 1px solid var(--c-fg);
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+}
+.p5-parameter-group:first-child {
+  margin-top: 0;
+}
+.p5-parameter {
+  display: flex;
+}
+.p5-parameter label {
+  flex-grow: 1;
+  cursor: pointer;
+}
+.p5-parameter input {
+  background-color: var(--c-bg);
+  border: 0;
+  color: var(--c-fg);
+  text-align: right;
+  width: 5rem;
+}
+.p5-parameter input:focus {
+  outline: none;
+}
+
+.instructions {
+  margin-top: 2rem;
+}
+
+#canvas {
+  flex-grow: 1;
+}
+
+@media (max-width: 640px) {
+  body {
+    height: auto;
+    padding: 2rem;
+  }
+
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .p5-parameters {
+    width: auto;
+  }
+
+  #canvas {
+    width: 100%;
+    height: 100vh;
+  }
+}
