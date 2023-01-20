@@ -17,6 +17,7 @@
   <body>
     <div class="wrapper">
       <div class="p5-parameters">
+        <p class="mobile-warning">Better experienced on desktop</p>
         <div class="p5-parameter-group">
           <div class="p5-parameter">
             <label for="COLUMNS">Columns</label>
@@ -105,6 +106,7 @@
     const handleClick = (event) => { event.target.select() }
     Object.keys(PARAMS).forEach((param) => {
       document.getElementById(param).addEventListener("click", handleClick)
+      document.getElementById(param).addEventListener("focusout", () => { updateParams(); resetCanvas(); })
     })
 
     // Link to other renderer

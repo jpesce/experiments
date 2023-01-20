@@ -92,7 +92,7 @@ draw = () => {
   cellsCanvas.remove() // Collect our garbage
 }
 
-windowResized = () => resetCanvas()
+//windowResized = () => resetCanvas()
 
 const drawCell = (outerCanvas, leftCorner, topCorner) => {
   // Invert colors
