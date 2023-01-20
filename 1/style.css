@@ -82,12 +82,20 @@ body {
     padding: 2rem;
   }
 
+  * {
+    font-size: 1rem;
+  }
+
   .wrapper {
     flex-direction: column;
   }
 
   .p5-parameters {
     width: auto;
+  }
+
+  .p5-parameter {
+    padding: 0.25rem 0;
   }
 
   #canvas {
