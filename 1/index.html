@@ -72,7 +72,7 @@
         </div>
         <div class="instructions">
           <p>Click on parameter to change<br/>Press enter to apply</p>
-          <p><a href="" id="renderer-link"></a></p>
+          <p class="renderer"><a href="" id="renderer-link"></a></p>
         </div>
       </div>
       <div id="canvas"></div>
@@ -102,17 +102,41 @@
     }
     document.addEventListener("keyup", handleKeyUp)
 
-    // When input is clicked, select all text
-    const handleClick = (event) => { event.target.select() }
     Object.keys(PARAMS).forEach((param) => {
-      document.getElementById(param).addEventListener("click", handleClick)
-      document.getElementById(param).addEventListener("focusout", () => { updateParams(); resetCanvas(); })
+      const element = document.getElementById(param)
+
+      switch(element.type) {
+        case "text":
+          // When input is clicked, select all text
+          element.addEventListener("click", (event) => {
+            event.target.select()
+          })
+
+          // On mobile update canvas on focus out
+          if(isOnMobile())
+            element.addEventListener("focusout", () => {
+              updateParams();
+              resetCanvas();
+            })
+          break;
+        case "checkbox":
+          element.addEventListener("click", () => {
+            updateParams();
+            resetCanvas();
+          })
+          break;
+      }
     })
 
-    // Link to other renderer
+    // Renderer
+    // Redirect to SVG on mobile because it's better supported
+    if(isOnMobile() && !urlSearchParams.has("SVG"))
+      window.location.replace(window.location.pathname + "?SVG")
+
+    // Dynamically show other renderer link
     const rendererLink = document.getElementById("renderer-link")
-    rendererLink.innerHTML  = "Render as "
-    rendererLink.innerHTML += RENDER_AS_SVG ? "bitmap/canvas" : "vector/SVG"
-    rendererLink.href = RENDER_AS_SVG ? window.location.pathname : "?SVG"
+          rendererLink.innerHTML  = "Render as "
+          rendererLink.innerHTML += RENDER_AS_SVG ? "bitmap/canvas" : "vector/SVG"
+          rendererLink.href = RENDER_AS_SVG ? window.location.pathname : "?SVG"
   </script>
 </html>
