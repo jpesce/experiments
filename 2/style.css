@@ -1,0 +1,33 @@
+:root {
+  --c-fg: #f1eee3;
+  --c-bg: #fff;
+  --t-family-mono: Monaco, monospace;
+}
+
+html, body { margin: 0; padding: 0; }
+
+canvas { display: block; }
+
+*::selection {
+  color: var(--c-bg);
+  background-color: var(--c-fg);
+}
+
+* {
+  font-family: var(--t-family-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--c-fg);
+  user-select: none;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--c-bg);
+  box-sizing: border-box;
+}
+
+#canvas {
+  width: 100%;
+  height: 100vh;
+}
